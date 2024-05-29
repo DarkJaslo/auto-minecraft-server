@@ -1,9 +1,9 @@
 # auto-minecraft-server
 
-#### Disclaimer!
+### Disclaimer!
 This is still **work in progress!!** Don't expect it to work and run well.
 
-#### Idea and purpose
+### Idea and purpose
 This is a script that manages your Minecraft server efficiently. What does this exactly mean?
 
 It closes the server when it has been empty for a few minutes, and opens it when people try to connect. It does this via listening to the Minecraft 25565 port when the server is closed.
@@ -12,7 +12,7 @@ It assumes you use Docker, and in the global variables at the beginning of the c
 
 This is of course only useful if you can run at least the script 24/7.
 
-#### Disclaimer (part two)
+### Disclaimer (part two)
 
 This is just a script I made in less than an afternoon. It is bad, ugly, long, ultra-indented, inefficient, uses magic to work and probably violates international law.
 
