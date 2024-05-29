@@ -1,0 +1,1 @@
+Docker command to build the image. TODO: do it in a way that works
