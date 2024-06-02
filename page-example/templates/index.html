@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Flask Web Page</title>
+    <script>
+        // Function to fetch updated text from the server
+        function updateText() {
+            fetch('/update-text')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('text').innerText = data.text;
+                });
+        }
+
+        // Periodically update the text every 10 seconds
+        setInterval(updateText, 10000);
+
+        // Initial call to set the text when the page loads
+        window.onload = updateText;
+
+        // Function to send "Hello123" to the Flask server when the button is pressed
+        function sendHello(event) {
+            event.preventDefault(); // Prevent the form from submitting
+            fetch('/button-pressed', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({})  // Add an empty JSON object as the body
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.status);  // Log the response from the server
+                // Update the status message on the page if needed
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle errors if necessary
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1 id="text">{{ text }}</h1>
+    <!-- Use a form with a regular button -->
+    <form onsubmit="sendHello(event)">
+        <button type="submit">Open the server</button>
+    </form>
+</body>
+</html>
