@@ -74,6 +74,8 @@ class Handler:
                 if self.cycles_with_0_players >= self.MAX_CICLES:
                     self.close_server()
                     break
+            else:
+                self.cycles_with_0_players = 0
             time.sleep(self.CYCLE_TIME)
         self.cycles_with_0_players = 0
 
